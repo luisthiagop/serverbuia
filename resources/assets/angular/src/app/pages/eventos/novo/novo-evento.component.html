@@ -1,0 +1,225 @@
+<div class="container-fluid">
+    <div class="container">
+        <form [formGroup]="novoEventoForm"
+              (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group"
+                         [ngClass]="{'has-danger': novoEventoForm.controls['titulo'].invalid && novoEventoForm.controls['titulo'].touched}">
+                        <label for="titulo-input"
+                               class="form-control-label">Titulo</label>
+                        <input id="titulo-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.controls['titulo'].invalid}"
+                               formControlName="titulo"
+                               placeholder="Titulo do Evento">
+                        <div *ngIf="novoEventoForm.controls['titulo'].invalid && novoEventoForm.controls['titulo'].touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.controls['titulo'].errors?.required">O campo é obrigatório.
+                            </small>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.controls['titulo'].errors?.minlength">O campo deve possuir no
+                                mínimo 3 caracteres.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group"
+                         [ngClass]="{'has-danger': novoEventoForm.controls['data_evento'].invalid && novoEventoForm.controls['data_evento'].touched}">
+                        <label for="data_evento-input"
+                               class="form-control-label">Data do Evento</label>
+                        <input id="data_evento-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.controls['data_evento'].invalid}"
+                               placeholder="Data do Evento"
+                               formControlName="data_evento"
+                               bsDatepicker
+                               #dp="bsDatepicker"
+                               [bsConfig]="bsConfig">
+                        <div *ngIf="novoEventoForm.controls['data_evento'].invalid && novoEventoForm.controls['data_evento'].touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.controls['data_evento'].errors?.required">O campo é
+                                obrigatório.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group timepicker"
+                         [ngClass]="{'has-danger': novoEventoForm.controls['hora_evento'].invalid && novoEventoForm.controls['hora_evento'].touched}">
+                        <timepicker id="hora_evento-input"
+                                    formControlName="hora_evento"
+                                    [showMeridian]="false"
+                                    [arrowkeys]="true"
+                                    [showSpinners]="true"></timepicker>
+                        <div *ngIf="novoEventoForm.controls['hora_evento'].invalid && novoEventoForm.controls['hora_evento'].touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.controls['hora_evento'].errors?.required">O campo é
+                                obrigatório.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group"
+                         [ngClass]="{'has-danger': novoEventoForm.controls['tipo_evento'].invalid && novoEventoForm.controls['tipo_evento'].touched}">
+                        <label for="tipo_evento-select"
+                               class="form-control-label">Tipo do Evento</label>
+                        <select id="tipo_evento-select"
+                                formControlName="tipo_evento"
+                                class="form-control">
+                            <option *ngFor="let t of tipoEvento">{{ t }}</option>
+                        </select>
+                        <div *ngIf="novoEventoForm.controls['tipo_evento'].invalid && novoEventoForm.controls['tipo_evento'].touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.controls['tipo_evento'].errors?.required">O campo é
+                                obrigatório.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"
+                     formGroupName="endereco">
+                    <div class="form-group"
+                         [ngClass]="{'has-danger': novoEventoForm.get('endereco').invalid && novoEventoForm.get('endereco').touched}">
+                        <b>Localização</b>
+                        <input id="cep-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.cep').invalid}"
+                               placeholder="CEP"
+                               formControlName="cep"
+                               (blur)="buscaCEP($event.target.value)"
+                               maxlength="8">
+                        <div *ngIf="novoEventoForm.get('endereco.cep').invalid && novoEventoForm.get('endereco.cep').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.cep').errors?.required">O campo é obrigatório.
+                            </small>
+                        </div>
+                        <input id="nome-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.nome_local').invalid}"
+                               placeholder="Nome do Local"
+                               formControlName="nome_local">
+                        <div *ngIf="novoEventoForm.get('endereco.nome_local').invalid && novoEventoForm.get('endereco.nome_local').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.nome_local').errors?.required">O campo é
+                                obrigatório.
+                            </small>
+                        </div>
+                        <input id="endereco-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.rua').invalid}"
+                               placeholder="Endereço"
+                               formControlName="rua">
+                        <div *ngIf="novoEventoForm.get('endereco.rua').invalid && novoEventoForm.get('endereco.rua').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.rua').errors?.required">O campo é obrigatório.
+                            </small>
+                        </div>
+                        <input id="numero-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.numero').invalid}"
+                               placeholder="Número"
+                               formControlName="numero">
+                        <div *ngIf="novoEventoForm.get('endereco.numero').invalid && novoEventoForm.get('endereco.numero').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.numero').errors?.required">O campo é obrigatório.
+                            </small>
+                        </div>
+                        <input id="bairro-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.bairro').invalid}"
+                               placeholder="Bairro"
+                               formControlName="bairro">
+                        <div *ngIf="novoEventoForm.get('endereco.bairro').invalid && novoEventoForm.get('endereco.bairro').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.bairro').errors?.required">O campo é obrigatório.
+                            </small>
+                        </div>
+                        <input id="cidade-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.localidade').invalid}"
+                               placeholder="Cidade"
+                               formControlName="localidade">
+                        <div *ngIf="novoEventoForm.get('endereco.localidade').invalid && novoEventoForm.get('endereco.localidade').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.localidade').errors?.required">O campo é
+                                obrigatório.
+                            </small>
+                        </div>
+                        <input id="uf-input"
+                               type="text"
+                               class="form-control"
+                               [ngClass]="{'form-control-danger': novoEventoForm.get('endereco.uf').invalid}"
+                               placeholder="UF"
+                               formControlName="uf">
+                        <div *ngIf="novoEventoForm.get('endereco.uf').invalid && novoEventoForm.get('endereco.uf').touched">
+                            <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                            <small class="form-text text-muted"
+                                   *ngIf="novoEventoForm.get('endereco.uf').errors?.required">O campo é obrigatório.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col hidden-xs">
+                    <agm-map [zoom]="zn"
+                             [latitude]="lat"
+                             [longitude]="lng">
+                        <agm-marker [latitude]="lat"
+                                    [longitude]="lng"></agm-marker>
+                    </agm-map>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox"
+                               class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Exibir mapa na página do evento</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="description-input"
+                           class="form-control-label">Descrição</label>
+                    <textarea id="description-input"
+                              formControlName="descricao"
+                              (onEditorKeyup)="keyupHandlerFunction($event)"></textarea>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            [disabled]="novoEventoForm.invalid"
+                            class="btn btn-block btn-default">Salvar e Continuar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container-fluid text-center footer">
+    <p>Copyright &copy; AEC-Empresa 2017</p>
+</div>

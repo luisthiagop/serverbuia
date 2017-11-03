@@ -1,0 +1,169 @@
+<app-header></app-header>
+
+<div class="container">
+
+  <!-- Box do perfil do usuário -->
+  <div class="row justify-content-md-center" style="margin-top: 50px;">
+    <div class="col-sm-2 col-md-2">
+      <img class="img-fluid rounded-circle" style="display: block; margin: 0 auto" src="https://conteudo.imguol.com.br/c/bol/fotos/0d/2017/01/27/will-smith-1485538224649_300x300.jpg" alt="">
+    </div>
+    <div class="col-sm-4 col-md-4">
+      <blockquote class="blockquote">
+        <p>Will Smith</p> <small><cite >Filadélfia, EUA  <i class="fa fa-map-marker" aria-hidden="true"></i></cite></small>
+      </blockquote>
+      <p> <i class="fa fa-envelope" aria-hidden="true"></i> mastersmith@gmail.com
+        <br /> <i class="fa fa-gift" aria-hidden="true"></i> January 30, 1974
+        <br /> <i class="fa fa-birthday-cake" aria-hidden="true"></i> Idade: 49 anos</p>
+    </div>
+  </div>
+
+
+  <div class="justify-content-md-center col-12" style="margin-top: 30px;">
+    <!-- Início das Tabs -->
+    <!-- <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Últimos Eventos</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Seguindo</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">Seguidores</label> -->
+
+    <!-- Tabs -->
+    <nav class="nav nav-tabs justify-content-center" id="myTab" role="tablist" style="margin-bottom: 30px">
+      <a class="nav-item nav-link show active" id="nav-eventos-tab" data-toggle="tab" href="#nav-eventos" role="tab" aria-controls="nav-eventos" aria-selected="true"><i class="fa fa-calendar" aria-hidden="true"></i> Últimos Eventos</a>
+      <a class="nav-item nav-link" id="nav-seguindo-tab" data-toggle="tab" href="#nav-seguindo" role="tab" aria-controls="nav-seguindo" aria-selected="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Seguindo</a>
+      <a class="nav-item nav-link" id="nav-seguidores-tab" data-toggle="tab" href="#nav-seguidores" role="tab" aria-controls="nav-seguidores" aria-selected="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Seguidores</a>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-eventos" role="tabpanel" aria-labelledby="nav-eventos-tab">
+        <div class="row">
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 1'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 2'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 3'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 4'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 1'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 2'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 3'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start cardEvento">
+            <app-card [titulo]="'Festa 4'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="nav-seguindo" role="tabpanel" aria-labelledby="nav-seguindo-tab">
+        <div class="row">
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="nav-seguidores" role="tabpanel" aria-labelledby="nav-seguidores-tab">
+        <div class="row">
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard></app-profileCard>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!--<section id="content1">
+      <div class="box">
+        <div class=col-12></div>
+        <div class="row">
+          <div class="col col-md-3 align-sel-start">
+            <app-card [titulo]="'Festa 1'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-card [titulo]="'Festa 2'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-card [titulo]="'Festa 3'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-card [titulo]="'Festa 4'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-card>
+          </div>-
+        </div>
+      </div>
+    </section>-->
+
+    <!-- Tab das cards/box de profile Seguindo -->
+    <!--<section id="content2">
+      <div class="box">
+        <div class="row">
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 1'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 2'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 3'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 4'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+        </div>
+      </div>
+    </section>-->
+
+    <!-- Tab das cards/box de profile Seguidores -->
+    <!-- <section id="content3">
+      <div class="box">
+        <div class="row">
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 1'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 2'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 3'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+          <div class="col col-md-3 align-sel-start">
+            <app-profileCard [titulo]="'Festa 4'" [img]="'http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif'"></app-profileCard>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+  </div>
+
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,127 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="col-md-6 mx-auto">
+            <h2>Cadastro</h2>
+            <form [formGroup]="signupForm"
+                  (ngSubmit)="onSubmit()">
+                <div class="form-group"
+                     [ngClass]="{'has-danger': signupForm.controls['email'].invalid && signupForm.controls['email'].touched}">
+                    <label for="email-input"
+                           class="form-control-label">E-mail</label>
+                    <input id="email-input"
+                           type="email"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': signupForm.controls['email'].invalid}"
+                           formControlName="email"
+                           placeholder="Insira seu email">
+                    <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['email'].errors?.required">O campo é obrigatório.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'has-danger': signupForm.controls['nome'].invalid && signupForm.controls['nome'].touched}">
+                    <label for="name-input"
+                           class="form-control-label">Nome</label>
+                    <input id="name-input"
+                           type="text"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': signupForm.controls['nome'].invalid}"
+                           formControlName="nome"
+                           placeholder="Insira seu nome">
+                    <div *ngIf="signupForm.controls['nome'].invalid && signupForm.controls['nome'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['nome'].errors?.required">O campo é obrigatório.
+                        </small>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['nome'].errors?.minlength">O campo deve possuir no mínimo 3
+                            caracteres.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'has-danger': signupForm.controls['data_nascimento'].invalid && signupForm.controls['data_nascimento'].touched}">
+                    <label for="data_nascimento-input"
+                           class="form-control-label">Data Nascimento</label>
+                    <input id="data_nascimento-input"
+                           type="text"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': signupForm.controls['data_nascimento'].invalid}"
+                           formControlName="data_nascimento"
+                           bsDatepicker
+                           #dp="bsDatepicker"
+                           [bsConfig]="bsConfig"
+                           placeholder="dd/mm/yyyy">
+                    <div *ngIf="signupForm.controls['data_nascimento'].invalid && signupForm.controls['data_nascimento'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['data_nascimento'].errors?.required">O campo é obrigatório.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'has-danger': signupForm.controls['password'].invalid && signupForm.controls['password'].touched}">
+                    <label for="password-input"
+                           class="form-control-label">Senha</label>
+                    <input id="password-input"
+                           type="password"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': signupForm.controls['password'].invalid}"
+                           formControlName="password"
+                           placeholder="••••••••">
+                    <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['password'].errors?.required">O campo é obrigatório.
+                        </small>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['password'].errors?.minlength">O campo deve possuir no mínimo
+                            6 caracteres.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'has-danger': signupForm.controls['password_confirmation'].invalid && signupForm.controls['password_confirmation'].touched}">
+                    <label for="password_confirmation-input"
+                           class="form-control-label">Confirme a senha</label>
+                    <input id="password_confirmation-input"
+                           type="password"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': signupForm.controls['password_confirmation'].invalid}"
+                           formControlName="password_confirmation"
+                           placeholder="••••••••">
+                    <div *ngIf="signupForm.controls['password_confirmation'].invalid && signupForm.controls['password_confirmation'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['password_confirmation'].errors?.required">O campo é
+                            obrigatório.
+                        </small>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['password_confirmation'].errors?.MatchPassword">As senhas não
+                            coincidem.
+                        </small>
+                        <small class="form-text text-muted"
+                               *ngIf="signupForm.controls['password_confirmation'].errors?.minlength">O campo deve
+                            possuir no mínimo 6 caracteres.
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="mx-auto"
+                       routerLink="/login">Já possuo uma conta</a>
+                </div>
+                <button type="submit"
+                        [disabled]="signupForm.invalid"
+                        class="btn btn-primary btn-lg btn-block">Cadastrar-se
+                </button>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center footer">
+    <p>Copyright &copy; AEC-Empresa 2017</p>
+</div>

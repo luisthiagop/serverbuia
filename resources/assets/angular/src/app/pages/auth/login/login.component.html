@@ -1,0 +1,65 @@
+
+<div class="container-fluid">
+        <div class="col-lg-6 offset-sm-3 form-group-field" id = "formulario">
+            <form [formGroup]="loginForm"
+                  (ngSubmit)="onSubmit()">
+                <h2>Login</h2>
+                <div class="form-group"
+                     [ngClass]="{'has-danger': loginForm.controls['email'].invalid && loginForm.controls['email'].touched}">
+                    <label for="email-input"
+                           class="form-control-label">E-mail</label>
+                    <input id="email-input"
+                           type="email"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': loginForm.controls['email'].invalid}"
+                           formControlName="email"
+                           placeholder="Insira seu email">
+                    <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="loginForm.controls['email'].errors?.required">O campo é obrigatório.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'has-danger': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}">
+                    <label for="password-input"
+                           class="form-control-label">Senha</label>
+                    <input id="password-input"
+                           type="password"
+                           class="form-control"
+                           [ngClass]="{'form-control-danger': loginForm.controls['password'].invalid}"
+                           formControlName="password"
+                           placeholder="••••••••">
+                    <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                        <div class="form-control-feedback"> Oops! Há algo de errado!</div>
+                        <small class="form-text text-muted"
+                               *ngIf="loginForm.controls['password'].errors?.required">O campo é obrigatório.
+                        </small>
+                        <small class="form-text text-muted"
+                               *ngIf="loginForm.controls['password'].errors?.minlength">O campo deve possuir no mínimo
+                            6 caracteres.
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="submit"
+                                [disabled]="loginForm.invalid"
+                                class="btn btn-primary btn-lg">Acessar
+                        </button>
+                    </div>
+                    <div class="col-lg-6">
+                        <a routerLink="/">
+                            <button type="button"
+                                    class="btn btn-primary btn-lg">Criar Conta
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+<div class="container-fluid text-center footer">
+    <p>Copyright &copy; AEC-Empresa 2017</p>
+</div>

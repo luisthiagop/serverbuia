@@ -1,0 +1,463 @@
+{
+	"variables": [],
+	"info": {
+		"name": "API",
+		"_postman_id": "0ae360d8-c840-7180-ac17-0fddbb5ccf14",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastro/Login",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:8000/api/cadastro",
+					"request": {
+						"url": "localhost:8000/api/cadastro",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Pedro",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "data_de_nascimento",
+									"value": "19970825",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "39911184838",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "pedromneto97@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "teste123",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "teste123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Cadastro"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/login",
+					"request": {
+						"url": "localhost:8000/api/login",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "pedromneto97@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "teste123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:8000/api/users/id",
+					"request": {
+						"url": "localhost:8000/api/users/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get User"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/users/id?parametros",
+					"request": {
+						"url": {
+							"raw": "localhost:8000/api/users/1?nome=PeDro&email=pedromneto97@gmail.com&data_de_nascimento=19970925",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "PeDro",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "email",
+									"value": "pedromneto97@gmail.com",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "data_de_nascimento",
+									"value": "19970925",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"equals": true,
+									"description": "",
+									"disabled": true
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": "Update user"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/users/id",
+					"request": {
+						"url": "localhost:8000/api/users/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete User"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:8000/api/eventos/id",
+					"request": {
+						"url": "localhost:8000/api/eventos/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "valor_ingresso",
+									"value": "10",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "uepg",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "ponta grossa",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "pais",
+									"value": "brasil",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "20171225",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "particular",
+									"value": "0",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Create evento"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/eventos",
+					"request": {
+						"url": "localhost:8000/api/eventos",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "valor_ingresso",
+									"value": "10",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "uepg",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "ponta grossa",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "pais",
+									"value": "brasil",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "20171225",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "particular",
+									"value": "0",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Create evento"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/eventos",
+					"request": {
+						"url": "localhost:8000/api/eventos",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all eventos"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/eventos/id?parametros",
+					"request": {
+						"url": {
+							"raw": "localhost:8000/api/eventos/1?valor_ingresso=1&endereco=campus&cidade=Ponta Grossa&pais=Brazil&data=20180101&particular=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"eventos",
+								"1"
+							],
+							"query": [
+								{
+									"key": "valor_ingresso",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "endereco",
+									"value": "campus",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "cidade",
+									"value": "Ponta Grossa",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pais",
+									"value": "Brazil",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "data",
+									"value": "20180101",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "particular",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": "Put Evento"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/eventos/id",
+					"request": {
+						"url": "localhost:8000/api/eventos/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete evento"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Convidados",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:8000/api/convidado",
+					"request": {
+						"url": "localhost:8000/api/convidado",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all convidados"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/convidado/id",
+					"request": {
+						"url": {
+							"raw": "localhost:8000/api/convidado/2?user_id=1&festa_id=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"convidado",
+								"2"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "festa_id",
+									"value": "4",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get convidado"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8000/api/convidado",
+					"request": {
+						"url": "localhost:8000/api/convidado",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "festa_id",
+									"value": "5",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "tem_permissao_convite",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Post Convidado"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
